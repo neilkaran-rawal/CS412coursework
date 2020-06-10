@@ -1,0 +1,131 @@
+Neilkaran Rawal
+Professor Perry Donham
+PS0: MEAN Git
+
+Git Tutorial URL: https://learngitbranching.js.org/ 
+
+Introduction Sequence:
+
+Definition Git Commits:
+
+A commit in a git repository records a snapshot of all the files in your directory. It's like a giant copy and paste. Git also maintains a history of which commits were made when.
+
+Level 1:
+
+$git commit
+$git commit
+
+
+Definition of Git Branches:
+
+Branches are simply pointers to a specific commit -- nothing more. "branch early, and branch often". Simply, I want to include the work of this commit and all parent commits.
+
+git checkout <name> ----- This command tells git we want to checkout/point to a specific branch; put us on the new branch before committing our changes
+
+Level 2:
+
+$git checkout -b bugFix
+
+
+Definition of Git Merge:
+
+Combining the work from two different branches together. Merging in Git creates a special commit that has two unique parents. "I want to include all the work from this parent over here and this one over here, and the set of all their parents."
+
+level 3:
+
+$git checkout -b bugFix
+$git commit
+$git checkout master
+$git commit
+$git merge bugFix
+
+
+Definition of Git Rebase:
+
+Alternatively, you can combine work between branches by utilizing rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
+***commit log / history of the repository will be a lot cleaner if only rebasing is allowed.
+
+E.G
+
+We would like to move our work from bugFix directly onto the work from master. That way it would look like these two features were developed sequentially, when in reality they were developed in parallel.
+
+level 4:
+
+$git checkout -b bugFix
+$git commit
+$git checkout master
+$git commit
+$git checkout bugFix
+$git rebase master
+
+Ramping Up:
+
+Definition of HEAD:
+
+HEAD is the symbolic name for the currently checked out commit -- it's essentially what commit you're working on top of. HEAD always points to the most recent commit which is reflected in the working tree. 
+
+Level 1:
+
+$git checkout C4
+
+Definition of Relative Refs
+
+To swiftly move around git tree
+
+Relative Refs -- tools/cmds
+git log
+Moving upwards one commit at a time with ^
+
+E.G --- master^ is equivalent to "the first parent of master"
+
+Moving upwards a number of times with ~<num>
+
+Level 2:
+
+$git checkout bugFix^
+
+Level 3:
+
+Definition of ~ operator:
+
+The tilde operator (optionally) takes in a trailing number that specifies the number of parents you would like to ascend
+
+Branching E.G with ~
+
+git branch -f master HEAD~3
+
+moves (by force) the master branch to three parents behind HEAD
+
+$git branch -f master C6
+$git branch -f bugFix HEAD~2
+$git checkout HEAD^
+
+
+Level 4: 
+
+Definition of Reversing Changes:
+
+Two ways to undo changes in Git -- git reset, git revert
+
+git reset -- reverts changes by moving a branch reference backwards in time to an older commit. Simply, will move a branch backwards as if the commit had never been made in the first place.
+
+git revert --  to reverse changes and share those reversed changes with others (for remote purposes)
+
+$git reset local~1
+$git checkout pushed
+$git revert pushed
+
+
+Moving Work Around:
+
+Level 1:
+
+$git cherry-pick C3
+$git cherry-pick C4 C7
+
+
+Level 2:
+
+$git rebase -i master~4
+
+
