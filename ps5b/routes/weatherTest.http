@@ -1,4 +1,4 @@
-GET http://localhost:3000/find/:name
+GET http://localhost:3000/find/:temp
 Accept: application/json
 
 ###
