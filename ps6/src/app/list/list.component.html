@@ -1,0 +1,10 @@
+
+<div name="outerList">
+  <ul *ngFor = "let weather typeof stat">
+    <li (click)="showTemp(weather.temp)">{{weather.temp}} </li>
+  </ul>
+</div>
+
+<div name="details" *ngIf="selectedStat">
+  <input name="temp" type="text" value="{{selectedStat.temp}}">
+</div>
